@@ -1,7 +1,11 @@
 MODULE_big=coordconv
+EXTENSION=coordconv
+EXTVERSION:=$(shell grep default_version $(EXTENSION).control | \
+		 sed -e "s/default_version[[:space:]]*=[[:space:]]*'\([^']*\)'/\1/")
 OBJS=pgcoord.o wcscon.o
-DATA_built=coordconv.sql
+#DATA_built=coordconv.sql
 #DOCS=README.q3c
+DATA = $(wildcard scripts/*sql)
 
 OPT=-O3 -mtune=native -march=native
 OPT_LOW=-O2
@@ -9,19 +13,6 @@ OPT_LOW=-O2
 PG_CPPFLAGS = $(DEBUG) $(OPT) -D_GNU_SOURCE
 SHLIB_LINK += $(filter -lm, $(LIBS))
 
-ifdef NO_PGXS
-subdir = contrib/coord
-top_builddir = ../..
-include $(top_builddir)/src/Makefile.global
-include $(top_srcdir)/contrib/contrib-global.mk
-else
-PGXS := $(shell pg_config --pgxs)
-ifndef PGXS
-$(error You should have `pg_config` program in your PATH or compile Q3C with\
-'make NO_PGXS=1' \
-after putting it in the contrib subdirectory of Postgres sources)
-endif
+PG_CONFIG = pg_config
+PGXS := $(shell $(PG_CONFIG) --pgxs)
 include $(PGXS)
-
-endif
-
