@@ -1,4 +1,22 @@
 
-Small postgreSQL package to convert equatorial coordinates to galactic and 
+Author: Sergey Koposov, Carnegie Mellon University
+
+Email: skoposov _AT_ cmu _DOT_ edu
+
+Copyright: (c) Sergey Koposov, Doug Mink
+
+Description: Small postgreSQL package to convert equatorial coordinates to galactic and 
 back
 
+Functions provided are 
+
+* gal2fk5ra(real, real)
+
+* gal2fk5dec(real, real)
+
+* fk52gall(real, real)
+
+* fk52galb(real, real)   
+
+which convert from IAU 1958 Galactic coordinates into J2000 FK5 coordiantes
+and back. All inputs are in decimal degrees
