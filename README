@@ -1,12 +1,11 @@
 
-Author: Sergey Koposov, Carnegie Mellon University
+Author: Sergey Koposov, University of Edinburgh
 
-Email: skoposov _AT_ cmu _DOT_ edu
+Email: skoposov _AT_ ed _DOT_ ac _DOT_ uk
 
 Copyright: (c) Sergey Koposov, Doug Mink
 
-Description: Small postgreSQL package to convert equatorial coordinates to galactic and 
-back
+Description: Small postgreSQL package to convert equatorial coordinates to galactic and back. The low-lelve conversion code itself is taken wcstools.
 
 Functions provided are 
 
